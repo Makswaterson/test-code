@@ -76,3 +76,32 @@
 //   return result;
 // }
 ///////////////////////////////////////////////////
+
+// task 2 function////////////////////////////////////////
+// Напиши функцію findLongestWordstring), яка приймає довільний рядок, що складається тільки зі слів, розділених пробілом(параметр string), і повертає найдовше слово в цьому рядку.
+
+// function findLongestWordstring(string) {
+
+//     let words = string.split(" ")
+//     let longWord = words[0]
+//     for (let i = 0; i < words.length; i += 1) {
+
+//         if (words[i].length > longWord.length) {
+//             longWord = words[i]
+//         }
+//     }
+//   return longWord
+// }
+// //  За допомогою конструкції for
+// function findLongestWordstring(string) {
+// let words = string.split(" ");
+//     let longWord = words[0];
+
+//   for (const word of words) {
+//     if (word.length > longWord.length) {
+//       longWord = word;
+//     }
+//   }
+//   return longWord
+// }
+///////////////////////////////////////////////////////////////////
