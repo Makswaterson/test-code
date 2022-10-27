@@ -40,16 +40,33 @@ const pictures = [
   },
 ];
 
-const itemEl = document.createElement('li');
-itemEl.classList.add('gallery-item');
-const linkRef = document.createElement('a');
-linkRef.href = '#';
-
-const imgRef = document.createElement('img');
-imgRef.src = pictures[0].url;
-imgRef.alt = pictures[0].alt;
-linkRef.append(imgRef);
-itemEl.append(linkRef);
-
-listRef.append(itemEl);
+const listRef = document.querySelector('.js-gallery');
 console.log(listRef);
+
+// const itemEl = document.createElement('li');
+// itemEl.classList.add('gallery-item');
+// const linkRef = document.createElement('a');
+// linkRef.href = '#';
+
+// const imgRef = document.createElement('img');
+// imgRef.src = pictures[0].url;
+// imgRef.alt = pictures[0].alt;
+// linkRef.append(imgRef);
+// itemEl.append(linkRef);
+
+// listRef.append(itemEl);
+// console.log(listRef);
+
+const listItems = pictures.map(({ alt, url, width, height }) => {
+  const itemEl = document.createElement('li');
+  itemEl.classList.add('gallery-item');
+  const linkRef = document.createElement('a');
+  linkRef.href = '#';
+  const imgRef = document.createElement('img');
+  imgRef.src = url;
+  imgRef.alt = alt;
+  linkRef.append(imgRef);
+  itemEl.append(linkRef);
+  console.log(itemEl);
+  // listRef.append(itemEl);
+});
