@@ -33,5 +33,17 @@ const pictures = [
 ];
 
 {
-  /* <li><a href=""><img src="" alt=""></a></li> */
 }
+
+const galleryRef = document.querySelector('#js-gallery');
+const listItems = pictures.map(({ alt, url, width, height }) => {
+  return `<li><a href="#"><img src='${url}' alt='${alt}', width = '${width}', height = '${height}'></a></li>`;
+});
+let markup = listItems.join('');
+galleryRef.innerHTML = markup;
+
+const btnRef = document.querySelector('button');
+btnRef.addEventListener('click', () => {
+  markup += markup;
+  galleryRef.insertAdjacentHTML('beforebegin', markup);
+});
