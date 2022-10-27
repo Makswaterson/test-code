@@ -65,8 +65,12 @@ const listItems = pictures.map(({ alt, url, width, height }) => {
   const imgRef = document.createElement('img');
   imgRef.src = url;
   imgRef.alt = alt;
+  imgRef.width = width;
+  imgRef.height = height;
   linkRef.append(imgRef);
   itemEl.append(linkRef);
-  console.log(itemEl);
-  // listRef.append(itemEl);
+  // console.log(itemEl);
+
+  return itemEl;
 });
+listRef.append(...listItems);
