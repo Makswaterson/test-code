@@ -11,7 +11,6 @@
  */
 
 const swapBtnRef = document.querySelector('.js-swap-btn');
-// console.log(swapBtn);
 const imgRef = document.querySelector('.js-img');
 const removeBtnRef = document.querySelector('.js-remove-listener');
 
