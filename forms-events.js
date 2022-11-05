@@ -92,7 +92,7 @@ const onPolicyInputChange = event => {
 policyInputRef.addEventListener('change', onPolicyInputChange);
 
 const handleInputName = event => {
-  outputNameRef.textContent = event.currentTarget.value;
+  outputNameRef.textContent = event.target.value;
 };
 
 inputNameRef.addEventListener('input', handleInputName);
