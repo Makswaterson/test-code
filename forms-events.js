@@ -92,7 +92,8 @@ const onPolicyInputChange = event => {
 policyInputRef.addEventListener('change', onPolicyInputChange);
 
 const handleInputName = event => {
-  outputNameRef.textContent = event.target.value;
+  const { value } = event.target;
+  outputNameRef.textContent = value ? value : 'Anonimys';
 };
 
 inputNameRef.addEventListener('input', handleInputName);
