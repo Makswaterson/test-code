@@ -9,7 +9,13 @@
 //  }
 
 const formRef = document.querySelector('.js-contact-form');
-const nameInputRef = document.querySelector('.js-username-input');
+// const nameInputRef = document.querySelector('.js-username-input');
+const inputListRef = document.querySelectorAll('.js-username-input');
+const policyInputRef = document.querySelector('.js-policy-checkbox');
+const btnSubmitRef = document.querySelector('.js-contact-form-submit');
+const inputNameRef = document.querySelector('[name="name"]');
+const outputNameRef = document.querySelector('.js-username-output');
+
 const onHandleSubmit = event => {
   event.preventDefault();
   const {
@@ -37,7 +43,7 @@ const onInputFocus = event => {
   console.log(event.target);
   event.target.classList.add('focus');
 };
-nameInputRef.addEventListener('focus', onInputFocus);
+// nameInputRef.addEventListener('focus', onInputFocus);
 
 const onInputBlur = event => {
   const { dataset, value } = event.target;
@@ -48,7 +54,7 @@ const onInputBlur = event => {
   // console.log(requiredLength);
   // console.log(value.length);
   // console.log(requiredLength === value.length);
-  if (requiredLength === value.length) {
+  if (requiredLength <= value.length) {
     // event.target.classList.add('valid');
     // event.target.classList.remove('invalid');
     changeClass('valid', 'invalid', event.target);
@@ -58,9 +64,35 @@ const onInputBlur = event => {
     changeClass('invalid', 'valid', event.target);
   }
 };
-nameInputRef.addEventListener('blur', onInputBlur);
+// nameInputRef.addEventListener('blur', onInputBlur);
 
 function changeClass(add, remove, elem) {
   elem.classList.add(add);
   elem.classList.remove(remove);
 }
+
+inputListRef.forEach(input => {
+  input.addEventListener('blur', onInputBlur);
+  input.addEventListener('focus', onInputFocus);
+});
+
+const onPolicyInputChange = event => {
+  const { checked } = event.target;
+  btnSubmitRef.disabled = checked ? false : true;
+  // if (checked) {
+  //   // btnSubmitRef.removeAttribute('disabled');
+  //   btnSubmitRef.disabled = false;
+  // } else {
+  //   btnSubmitRef.disabled = true;
+  // }
+
+  // console.log(event.target.checked);
+};
+
+policyInputRef.addEventListener('change', onPolicyInputChange);
+
+const handleInputName = event => {
+  outputNameRef.textContent = event.currentTarget.value;
+};
+
+inputNameRef.addEventListener('input', handleInputName);
