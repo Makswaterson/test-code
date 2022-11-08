@@ -26,6 +26,7 @@ function onTagsContainerClick(evt) {
   }
 
   // currentBtnActive?.classList.remove('tags__btn--active');
+  // Оператор необязательного свойства .? . При доступе к свойству работает только если правая часть не null и не undefind.
 
   console.log(selectedTags);
 }
