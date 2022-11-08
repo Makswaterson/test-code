@@ -24,5 +24,8 @@ function onTagsContainerClick(evt) {
   if (currentBtnActive) {
     currentBtnActive.classList.remove('tags__btn--active');
   }
+
+  // currentBtnActive?.classList.remove('tags__btn--active');
+
   console.log(selectedTags);
 }
