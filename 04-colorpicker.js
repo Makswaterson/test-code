@@ -13,3 +13,16 @@ const colors = [
   { hex: '#795548', rgb: '121,85,72' },
   { hex: '#607d8b', rgb: '96,125,139' },
 ];
+
+// <!-- <div class="color-card">
+//      <div><div><div> <div
+//      class="color-swatch"
+//      data-hex="hex"
+//      data-rgb="rgb"
+//      style="background-color: hex"
+//    ></div></div></div></div>
+//       <div class="color-meta">
+//         <p>HEX: hex</p>
+//         <p>RGB: rgb</p>
+//       </div>
+//     </div> -->
