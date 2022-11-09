@@ -46,6 +46,14 @@ function onPalleteContainerClick(evt) {
   }
   console.log(evt.target);
 
+  const currentActiveCard = document.querySelector('.color-card.is-active');
+  if (currentActiveCard) {
+    currentActiveCard.classList.remove('is-active');
+  }
+
   const swatchEl = evt.target;
-  const psrentColorCard = swatchEl.nodeName();
+  const parentColorCard = swatchEl.closest('.color-card');
+  parentColorCard.classList.add('is-active');
+  console.log(swatchEl.dataset.hex);
+  document.body.style.background = swatchEl.dataset.hex;
 }
