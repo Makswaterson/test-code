@@ -14,15 +14,38 @@ const colors = [
   { hex: '#607d8b', rgb: '96,125,139' },
 ];
 
-// <!-- <div class="color-card">
-//      <div><div><div> <div
-//      class="color-swatch"
-//      data-hex="hex"
-//      data-rgb="rgb"
-//      style="background-color: hex"
-//    ></div></div></div></div>
-//       <div class="color-meta">
-//         <p>HEX: hex</p>
-//         <p>RGB: rgb</p>
-//       </div>
-//     </div> -->
+const palleteContainer = document.querySelector('.js-palette');
+const cardsMarkup = createColorCardsMarkup(colors);
+
+palleteContainer.insertAdjacentHTML('beforeend', cardsMarkup);
+
+palleteContainer.addEventListener('click', onPalleteContainerClick);
+
+function createColorCardsMarkup(colors) {
+  return colors
+    .map(({ hex, rgb }) => {
+      return `    <div class="color-card">
+     <div><div><div> <div
+     class="color-swatch"
+     data-hex="${hex}"
+     data-rgb="${rgb}"
+     style="background-color: ${hex}"
+   ></div></div></div></div>
+      <div class="color-meta">
+        <p>HEX: ${hex}</p>
+        <p>RGB: ${rgb}</p>
+      </div>
+    </div>`;
+    })
+    .join('');
+}
+function onPalleteContainerClick(evt) {
+  const isColorSwatchEl = evt.target.classList.contains('color-swatch');
+  if (!isColorSwatchEl) {
+    return;
+  }
+  console.log(evt.target);
+
+  const swatchEl = evt.target;
+  const psrentColorCard = swatchEl.nodeName();
+}
