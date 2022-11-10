@@ -19,10 +19,14 @@ const onPalletClick = ({ target }) => {
     isActive.classList.remove('active');
     isActive.firstElementChild.textContent = '...';
   }
-  if (isActive === target) {
+  if (isActive === target || isActive?.firstElementChild === target) {
     return;
   }
 
+  if (target.nodeName === 'SPAN') {
+    target.parentNode.classList.add('active');
+    target.textContent = target.parentNode.dataset.color;
+  }
   spanRef.textContent = target.dataset.color;
   target.classList.add('active');
   console.log(target.dataset.color);
