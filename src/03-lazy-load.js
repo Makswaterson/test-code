@@ -1,5 +1,16 @@
-/*
- * Ленивая загрузка изображений (концепция)
- * - нативная поддержка
- * - событие загрузки изображения
- */
+// /*
+//  * Ленивая загрузка изображений (концепция)
+//  * - нативная поддержка
+//  * - событие загрузки изображения
+//  */
+
+const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+console.log(lazyImages);
+
+lazyImages.forEach(image => {
+  image.addEventListener('load', onImageLoad);
+});
+function onImageLoad(evt) {
+  console.log('Фото загружено');
+  evt.target.classList.add('appear');
+}
