@@ -57,6 +57,7 @@ const onHandleInput = evt => {
   }
   if (findCountry.length === 1) {
     const countryListMarkup = createCountryInfo(findCountry[0]);
+    listRef.innerHTML = countryListMarkup;
     // listRef.innerHTML = countryListMarkup.join('');
     return;
   }
