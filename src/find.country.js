@@ -36,8 +36,52 @@ const outputErroRef = document.querySelector('.output-error');
 const listRef = document.querySelector('.country-card');
 
 const onHandleInput = evt => {
-  console.log(evt.target.value);
+  const { value } = evt.target;
+  const normalizeValue = value.trim().toLowerCase();
+  if (normalizeValue === '') {
+    outputErroRef.textContent = '';
+    listRef.innerHTML = '';
+    return;
+  }
+
+  const findCountry = countries.filter(({ name }) => {
+    return name.toLowerCase().includes(normalizeValue);
+  });
+  outputErroRef.textContent = '';
+  if (findCountry.length > 1) {
+    const countryListMarkup = createCountryListMarkup(findCountry);
+    listRef.innerHTML = countryListMarkup;
+    return;
+  }
+  if (findCountry.length === 1) {
+    const countryListMarkup = createCountryInfo(findCountry[0]);
+    // listRef.innerHTML = countryListMarkup.join('');
+    return;
+  }
+  if (findCountry.length === 0) {
+    outputErroRef.textContent = `Country ${normalizeValue} not found!`;
+    listRef.innerHTML = '';
+  }
 };
+
+function createCountryListMarkup(countries) {
+  return countries.map(
+    ({ name, capital }) =>
+      `<li>
+  <h5> Country name: ${name}</h5>
+  <p>Country capital: ${capital}</p>
+  </li>`
+  );
+}
+
+function createCountryInfo({ name, capital, population, area }) {
+  return `<li>
+  <h3> Country name: ${name}</h3>
+  <p>Country capital: ${capital}</p>
+  <p>population: ${population}</p>
+  <p>area: ${area}</p>
+  </li>`;
+}
 
 const trottledInput = _.throttle(onHandleInput, 300);
 inputRef.addEventListener('input', trottledInput);
