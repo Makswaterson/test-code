@@ -47,7 +47,9 @@ const onHandleInput = evt => {
   const findCountry = countries.filter(({ name }) => {
     return name.toLowerCase().includes(normalizeValue);
   });
+
   outputErroRef.textContent = '';
+
   if (findCountry.length > 1) {
     const countryListMarkup = createCountryListMarkup(findCountry);
     listRef.innerHTML = countryListMarkup.join('');
