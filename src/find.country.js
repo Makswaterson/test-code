@@ -50,7 +50,7 @@ const onHandleInput = evt => {
   outputErroRef.textContent = '';
   if (findCountry.length > 1) {
     const countryListMarkup = createCountryListMarkup(findCountry);
-    listRef.innerHTML = countryListMarkup;
+    listRef.innerHTML = countryListMarkup.join('');
     return;
   }
   if (findCountry.length === 1) {
