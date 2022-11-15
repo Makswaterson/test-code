@@ -31,3 +31,13 @@ const countries = [
     area: '6.8',
   },
 ];
+const inputRef = document.querySelector('.search-input');
+const outputErroRef = document.querySelector('.output-error');
+const listRef = document.querySelector('.country-card');
+
+const onHandleInput = evt => {
+  console.log(evt.target.value);
+};
+
+const trottledInput = _.throttle(onHandleInput, 300);
+inputRef.addEventListener('input', trottledInput);
