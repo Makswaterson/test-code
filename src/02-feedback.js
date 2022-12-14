@@ -53,30 +53,33 @@
 
 const STORAGE_KEY = 'feedback-msg';
 
-const formData = {};
+let formData = {};
 
 const refs = {
   form: document.querySelector('.js-feedback-form'),
   textarea: document.querySelector('.js-feedback-form  textarea'),
+  input: document.querySelector('.js-feedback-form  input'),
 };
 
 refs.form.addEventListener('submit', onFormSubmit);
 refs.textarea.addEventListener('input', onTextareaInput);
+refs.form.addEventListener('input', onTextareaInput);
 
 populateTextarea();
 
 function onFormSubmit(evt) {
   evt.preventDefault();
-
   console.log('Отправляем форму');
+  if (!formData.message || !formData.name) {
+    alert('Please,fill all fields');
+    return;
+  }
+  formData = {};
   evt.target.reset();
   localStorage.removeItem(STORAGE_KEY);
 }
 
 function onTextareaInput(evt) {
-  // const message = evt.target.value;
-  // localStorage.setItem(STORAGE_KEY, formData);
-
   formData[evt.target.name] = evt.target.value;
   const formDataJson = JSON.stringify(formData);
   localStorage.setItem(STORAGE_KEY, formDataJson);
@@ -85,24 +88,20 @@ function onTextareaInput(evt) {
 }
 
 function populateTextarea() {
-  const formData = localStorage.getItem(STORAGE_KEY);
+  const formData = JSON.parse(localStorage.getItem(STORAGE_KEY));
   if (formData) {
     refs.textarea.value = formData;
-    refs.textarea.name = formData;
-  }
-  const formDataJsonParse = JSON.parse(formData);
-  if (formDataJsonParse) {
-    formData[evt.target.name] = evt.target.value;
+    refs.input.name = formData;
   }
 }
 
-refs.form.addEventListener('input', evt => {
-  console.log(evt.target.name);
-  console.log(evt.target.value);
-  formData[evt.target.name] = evt.target.value;
-  const formDataJson = JSON.stringify(formData[evt.target.name]);
+// refs.form.addEventListener('input', evt => {
+//   console.log(evt.target.name);
+//   console.log(evt.target.value);
+//   formData[evt.target.name] = evt.target.value;
+//   const formDataJson = JSON.stringify(formData[evt.target.name]);
 
-  console.log(formDataJson);
+//   console.log(formDataJson);
 
-  console.log(formData);
-});
+//   console.log(formData);
+// });
